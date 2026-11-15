@@ -1,0 +1,19 @@
+.DS_Store
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+data/
+output/
+spark-warehouse/
+metastore_db/
+derby.log
+
+# Данные преподавателя для ДЗ №2
+/DZ_2/*.csv
+
+# Учётные данные и сессии Telegram
+.env
+.env.*
+!.env.example
+*.session
+*.session-journal
