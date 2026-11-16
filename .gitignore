@@ -8,8 +8,9 @@ spark-warehouse/
 metastore_db/
 derby.log
 
-# Данные преподавателя для ДЗ №2
+# Локальные наборы данных
 /DZ_2/*.csv
+/DZ_1/Задание 3/ml-latest-small/
 
 # Учётные данные и сессии Telegram
 .env

@@ -9,7 +9,7 @@
 
 | ДЗ | Тема | Состояние |
 |---|---|---|
-| [ДЗ №1](DZ_1/README.md) | RDD API | Задания 1 и 2 выполнены |
+| [ДЗ №1](DZ_1/README.md) | RDD API | Выполнено |
 | [ДЗ №2](DZ_2/README.md) | DataFrame API, анализ поездок | Заготовки |
 | [ДЗ №3](DZ_3/README.md) | Streaming, Telegram и Kafka | Заготовки |
 | [ДЗ №4](DZ_4/README.md) | Рекомендательные системы | Заготовки |
