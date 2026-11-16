@@ -10,7 +10,6 @@ derby.log
 
 # Локальные наборы данных
 /DZ_2/*.csv
-/DZ_1/Задание 3/ml-latest-small/
 
 # Учётные данные и сессии Telegram
 .env
