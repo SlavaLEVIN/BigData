@@ -13,4 +13,4 @@
 - Python 3.11
 - Java 17
 - PySpark 3.5.7
-- Shapely, GeoPandas и Matplotlib.
+- Shapely, GeoPandas, Matplotlib и Folium.
