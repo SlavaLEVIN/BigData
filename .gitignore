@@ -17,3 +17,6 @@ derby.log
 !.env.example
 *.session
 *.session-journal
+
+/DZ_4/ml-latest/
+/DZ_4/ml-latest-small/
