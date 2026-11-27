@@ -1,6 +1,9 @@
 import asyncio
+import fcntl
 import json
 import os
+import subprocess
+import sys
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -15,6 +18,24 @@ CHANNEL_IDS = [
     1310155678, 1001872252, 1054549314, 1073571855,
 ]
 ROOT = Path(__file__).resolve().parent
+
+
+def start_producer():
+    log_path = ROOT / ".venv" / "telegram_producer.log"
+    with log_path.open("a") as log:
+        process = subprocess.Popen(
+            [sys.executable, "-u", str(ROOT / "telegram_producer.py")],
+            stdin=subprocess.DEVNULL, stdout=log, stderr=subprocess.STDOUT,
+            start_new_session=True,
+        )
+    try:
+        status = process.wait(timeout=1)
+    except subprocess.TimeoutExpired:
+        print(f"Сборщик Telegram запущен. Лог: {log_path}")
+        return
+    if status != 0:
+        raise RuntimeError(f"Ошибка запуска сборщика. Подробности: {log_path}")
+    print("Сборщик Telegram уже работает.")
 
 
 def serialize_message(message):
@@ -72,5 +93,17 @@ async def main():
         producer.close()
 
 
+def run():
+    with (ROOT / ".venv" / "telegram_producer.lock").open("a") as lock:
+        try:
+            fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError:
+            return
+        try:
+            asyncio.run(main())
+        except KeyboardInterrupt:
+            pass
+
+
 if __name__ == "__main__":
-    asyncio.run(main())
+    run()
